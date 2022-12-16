@@ -134,10 +134,10 @@ Pastikan posisi terminal kalian di directory ```/testnet-validator```
 
    Edit file .env sesuai keterangan dibawah
 
-   | Variabl | Data yang harus di masukkan                             |
-   | ------- | ------------------------------------------------------- |
-   | ADDRESS | Masukkan address testnet kalian tanpa ``0x``di depannya |
-   | IP      | Masukkan IP VPS kalian                                  |
+   | Variable | Data yang harus di masukkan                             |
+   | -------- | ------------------------------------------------------- |
+   | ADDRESS  | Masukkan address testnet kalian tanpa ``0x``di depannya |
+   | IP       | Masukkan IP VPS kalian                                  |
 
    kemudian save, ```ctrl + x ```, ```y``` , ```enter```
 
@@ -216,4 +216,34 @@ Cek nama kalian [disini](https://stats.qtestnet.org/)
 Setelah selesai harusnya nama kalian sudah muncul di list, pastikan tanda **"centang"**nya ijo, itu artinya kalian berhasil stake token Q di node kalian
 tunggu sampai node kalian sync, harusnya setelah itu nama kalian bakal warna ijo semua.
 ![](https://snipboard.io/QEB8K7.jpg)
+
+## 4. Upgrade Validator Node
+
+1. masuk ke directory`QBlockchain/testnet-public-tools/testnet-validator`
+   buka `.env` file dan ganti versi client kalian ke `1.2.2` atau versi yang nanti bakal update
+
+   ```
+   nano .env
+   ```
+
+   cek bagian ``QCLIENT_IMAGE=qblockchain/q-client`
+   ganti versinya sesuai versi terakhir ( sekarang latest versinya `1.2.2`)
+
+   ```
+   QCLIENT_IMAGE=qblockchain/q-client:1.2.2
+   ```
+
+   `ctrl + x` , `y` , `enter` untuk save file .env
+
+2. Pull docker image
+   ```shell
+   docker-compose pull
+   ```
+
+3. Restart node dengan updated client yang terakhir
+   ```
+   docker-compose up -d
+   ```
+
+   
 
